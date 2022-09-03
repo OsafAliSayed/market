@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Market
+{% endblock %}
+
+{% block body %}
+
+<!-- Adding Secondary Header -->
+<div class="row">
+    <div class="col-md text-center m-3">
+        <h1>Market Page</h1>
+    </div>
+</div>
+
+<!-- Adding Tables -->
+<div class="row">
+    <!-- Adding Market Tables -->
+    <div class="col-md-7 pl-4">
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="5" class="text-center"> Market </th>
+                </tr>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Barcode</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adding the list in rows -->
+                {% for item in items %}
+                {% include 'includes/button_modal.html' %}
+                <tr>
+                    <td> {{ item.id }} </td>
+                    <td> {{ item.name }} </td>
+                    <td> {{ item.barcode }} </td>
+                    <td> {{ item.price}}$ </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-more_info-{{ item.id }}">More Info</button>
+                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modal-purchase_item-{{ item.id }}">Purchase This Item</button>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Adding Personal user table -->
+    <div class="col-md-5 pr-4">
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="5" class="text-center"> Owned Items </th>
+                </tr>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Barcode</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Adding the list in rows -->
+                {% for item in owned_items %}
+                {% include 'includes/button_modal.html' %}
+                <tr>
+                    <td> {{ item.id }} </td>
+                    <td> {{ item.name }} </td>
+                    <td> {{ item.barcode }} </td>
+                    <td> {{ item.price}}$ </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal-sell_item-{{ item.id }}">Sell This Item</button>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

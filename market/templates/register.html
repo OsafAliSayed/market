@@ -1,0 +1,45 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block body %}
+<!-- Adding Header -->
+<div class="row">
+    <div class="col-md text-center m-3">
+        <h1>Register</h1>
+    </div>
+</div>
+
+<!-- Adding Register Form -->
+<div class="row justify-content-center">
+    <div class="col-md-4 m-3">
+        <div class="shadow-lg container border border-secondary rounded px-4 py-4">
+            <form method="POST" class="form-register">
+                {{ form.hidden_tag() }}
+
+                {{ form.username.label(class="mt-3") }}
+                {{ form.username(class="form-control") }}
+
+                {{ form.email_address.label(class="mt-3") }}
+                {{ form.email_address(class="form-control") }}
+
+                {{ form.password1.label(class="mt-3") }}
+                {{ form.password1(class="form-control") }}
+
+                {{ form.password2.label(class="mt-3") }}
+                {{ form.password2(class="form-control") }}
+                
+                <center class="mt-3">
+                    <a class="link-primary" href="{{ url_for('login_page') }}">Already Have an account? Login Here</a>
+                </center>
+
+                <center>
+                    {{ form.submit(class="btn btn-outline-success mt-3 mb-3 p-2") }}
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

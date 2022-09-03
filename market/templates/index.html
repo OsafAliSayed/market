@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<div class="row mt-5">
+    <div class="col-md text-center ">
+        <h1><b>Online Market</b></h1>
+        <p class="mt--md-3">Start purchasing products by clicking the link below </p>
+        <a class="btn btn-outline-primary"  href="{{ url_for('market_page') }}" > Get Started</a>
+    </div> 
+</div>
+{% endblock %}

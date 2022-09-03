@@ -1,0 +1,86 @@
+<!-- modal code for more info -->
+<div class="modal" tabindex="-1" role="dialog" id="modal-more_info-{{ item.id }}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal Head -->
+            <div class="modal-header">
+                <h5 class="modal-title">{{ item.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="modal-body">
+                <p>{{ item.description }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal code for purchase this item -->
+<div class="modal" tabindex="-1" role="dialog" id="modal-purchase_item-{{ item.id }}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal Head -->
+            <div class="modal-header">
+                <h5 class="modal-title">{{ item.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="modal-body">
+                <form method="POST">
+                    {{ purchase_form.hidden_tag() }}
+
+                    <p class="text-center">
+                        Are you sure you want to purchase {{ item.name }} for {{ item.price }}$ ?
+                    </p>
+                    <hr>
+                    <div class="d-flex justify-content-end">
+                        <input id="purchased_item" name="purchased_item" type="hidden" value="{{ item.name }}">
+                        {{ purchase_form.submit(class="btn btn-outline-success mr-2")}}
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal code for selling items -->
+
+<div class="modal" tabindex="-1" role="dialog" id="modal-sell_item-{{ item.id }}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Modal Head -->
+            <div class="modal-header">
+                <h5 class="modal-title">{{ item.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="modal-body">
+                <form method="POST">
+                    {{ sell_form.hidden_tag() }}
+
+                    <p class="text-center">
+                        Are you sure you want to sell {{ item.name }} for {{ item.price }}$ ?
+                    </p>
+                    <hr>
+                    <div class="d-flex justify-content-end">
+                        <input id="sold_item" name="sold_item" type="hidden" value="{{ item.name }}">
+                        {{ sell_form.submit(class="btn btn-outline-success mr-2")}}
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
